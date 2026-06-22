@@ -941,8 +941,7 @@
 }
 
 .cta-heading-reveal .reveal-base {
-  display: block;
-  opacity: 0.15;
+  display: none;
 }
 
 .cta-heading-reveal .reveal-overlay {
