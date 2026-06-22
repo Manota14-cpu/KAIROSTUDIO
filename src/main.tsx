@@ -11,13 +11,33 @@ import { initScrollReveal } from './animations/scroll'
 import { initParallax, initCardHover } from './animations/parallax'
 import { initLoadingScreen } from './sections/LoadingScreen'
 import { LogoCarousel } from './components/LogoCarousel'
-import { setLocale } from './i18n/translations'
+import { initLocale, setLocale } from './i18n/translations'
 import { PROJECTS } from './constants'
 
 gsap.registerPlugin(ScrollTrigger)
 
+function initClock(): void {
+  const el = document.getElementById('nav-clock')
+  if (!el) return
+  function tick(): void {
+    const now = new Date()
+    el.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+  }
+  tick()
+  setInterval(tick, 10000)
+}
+
+function initLangSwitcher(): void {
+  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang') as 'en' | 'es' | 'pt' | 'fr'
+      if (lang) setLocale(lang)
+    })
+  })
+}
+
 function initApp(): void {
-  setLocale('en')
+  initLocale()
 
   const heroCanvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null
   let heroVisual: HeroVisual | undefined
@@ -88,7 +108,9 @@ function initProjectModal(): void {
 }
 
 function init(): void {
-  setLocale('en')
+  initLocale()
+  initLangSwitcher()
+  initClock()
 
   const fallbackTimer = setTimeout(() => {
     const screen = document.getElementById('loading-screen')
