@@ -10,7 +10,6 @@ import { HeroVisual } from './animations/heroVisual'
 import { initScrollReveal } from './animations/scroll'
 import { initParallax, initCardHover } from './animations/parallax'
 import { initLoadingScreen } from './sections/LoadingScreen'
-import { ServicesSection } from './components/services'
 import { LogoCarousel } from './components/LogoCarousel'
 import { setLocale } from './i18n/translations'
 
@@ -31,11 +30,6 @@ function initApp(): void {
   initNavbar()
   initCursorGlow()
   initHeroAnimation(heroVisual)
-
-  const servicesRoot = document.getElementById('services-root')
-  if (servicesRoot) {
-    createRoot(servicesRoot).render(<ServicesSection />)
-  }
 
   const clientsRoot = document.getElementById('clients-root')
   if (clientsRoot) {

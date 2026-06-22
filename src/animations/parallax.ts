@@ -26,18 +26,4 @@ export function initParallax(): void {
 }
 
 export function initCardHover(): void {
-  qsa<HTMLElement>('.project-card').forEach((card) => {
-    const overlay = card.querySelector('.project-overlay') as HTMLElement
-    const info = card.querySelector('.project-overlay-info') as HTMLElement
-    if (!overlay) return
-
-    card.addEventListener('mouseenter', () => {
-      gsap.to(overlay, { opacity: 1, duration: 0.2, ease: 'power2.out' })
-      gsap.to(info, { opacity: 1, duration: 0.25, ease: 'power2.out' })
-    })
-    card.addEventListener('mouseleave', () => {
-      gsap.to(overlay, { opacity: 0, duration: 0.35, ease: 'power2.out' })
-      gsap.to(info, { opacity: 0, duration: 0.25, ease: 'power2.out' })
-    })
-  })
 }
