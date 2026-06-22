@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAIROS — Creative Direction &amp; Design</title>
+  <meta name="description" content="Adrian Vale — Creative Director &amp; Designer. Brand strategy, visual identity, art direction, and design systems for fashion, culture, and technology." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Adrian Vale" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KAIROS — Creative Direction &amp; Design" />
+  <meta property="og:description" content="Adrian Vale — Creative Director &amp; Designer. Brand strategy, visual identity, art direction." />
+  <meta property="og:url" content="https://kairos.studio" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KAIROS — Creative Direction &amp; Design" />
+  <meta name="twitter:description" content="Adrian Vale — Creative Director &amp; Designer. Brand strategy, visual identity, art direction." />
+
+  <link rel="canonical" href="https://kairos.studio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://picsum.photos" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:wght@500;700&family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    .cursor-glow {
+      position: fixed; width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,57,69,0.05) 0%, transparent 65%);
+      pointer-events: none; z-index: 9999;
+      will-change: transform;
+    }
+    @media (pointer: coarse) { .cursor-glow { display: none; } }
+
+    html { background: #000000; }
+
+    #loading-screen {
+      position: fixed; inset: 0; z-index: 10000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #000; overflow: hidden;
+    }
+    .loading-ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,59,48,0.08); }
+    .loading-ring::after {
+      content: ''; position: absolute; inset: -1px; border-radius: 50%;
+      border: 1.5px solid transparent;
+      border-top-color: #FF3B30; border-right-color: #FF3B30;
+      animation: lr 1.2s cubic-bezier(0.34,1.56,0.64,1) infinite;
+      will-change: transform;
+    }
+    @keyframes lr { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .loading-percentage { font-family: 'Geist','DM Sans',sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; color: #999994; margin-top: 1.5rem; font-variant-numeric: tabular-nums; }
+  </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Adrian Vale",
+      "jobTitle": "Creative Director & Designer",
+      "description": "German-born creative director with over a decade of experience shaping brand identities.",
+      "url": "https://kairos.studio",
+      "email": "hello@kairos.studio",
+      "telephone": "+442079460958",
+      "knowsAbout": ["Brand Strategy", "Visual Identity", "Art Direction", "Motion Design", "Editorial Design", "Digital Design"]
+    }
+  </script>
+</head>
+<body>
+  <!-- ─── Loading Screen ─── -->
+  <div id="loading-screen" role="status" aria-label="Loading">
+    <div class="loading-bg" id="loading-bg"></div>
+    <div class="loading-ring-container">
+      <div class="loading-ring-glow" id="loading-glow"></div>
+      <div class="loading-ring"></div>
+    </div>
+    <div class="loading-percentage">
+      <span id="loading-number">0</span>
+      <span class="loading-suffix">%</span>
+    </div>
+    <div class="loading-brand" id="loading-brand">KAIROS</div>
+  </div>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-glow"></div>
+
+  <header class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <span class="nav-brand" data-i18n="nav.brand">KAIROS</span>
+      <span class="nav-center" data-i18n="nav.year">MMXXVI</span>
+      <span class="nav-right" data-i18n="nav.handle">@HELLOKAIROS</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ─── Hero ─── -->
+    <section class="hero-section" aria-label="Hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content container-main">
+        <div class="hero-text">
+          <p class="hero-label" data-i18n="hero.label">Creative Direction &amp; Design</p>
+          <h1 class="hero-name" data-animate="hero-line" data-i18n="hero.name">Adrian Vale</h1>
+          <p class="hero-meta" data-i18n="hero.title">Creative Director &amp; Designer</p>
+          <p class="hero-meta" data-i18n="hero.location">Based in London · Working Worldwide</p>
+          <p class="hero-bio" data-i18n="hero.bio">
+            German-born creative director with over a decade of experience shaping brand identities, visual narratives, and design systems. Currently leading creative direction at an independent studio, working across fashion, culture, and technology.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:hello@kairos.studio" class="hero-btn hero-btn-primary">
+              <span data-i18n="hero.cta.primary">Start a Project</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#portfolio" class="hero-btn hero-btn-ghost">
+              <span data-i18n="hero.cta.secondary">View Work</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" id="scroll-hint">
+        <span class="hero-scroll-hint-label">Scroll</span>
+        <div class="hero-scroll-hint-line"></div>
+      </div>
+    </section>
+
+    <!-- ─── About ─── -->
+    <section class="about-section container-main" data-reveal aria-label="About">
+      <p class="about-text" data-i18n="about.text">
+        With a foundation in graphic design and a practice rooted in strategic thinking, I bridge the gap between concept and craft. Every project begins with an idea — stripped of pretense, refined through process, and executed with precision. I believe in work that feels inevitable. Work that doesn't just look right, but is right. Over the past twelve years, I've had the privilege of collaborating with emerging studios and established houses alike, building visual languages that endure beyond seasonal trends. My approach is collaborative, rigorous, and driven by an obsession with the details that most people won't notice — but everyone will feel.
+      </p>
+    </section>
+
+    <!-- ─── Clients (React carousel) ─── -->
+    <div id="clients-root"></div>
+
+    <!-- ─── Services (React) ─── -->
+    <div id="services-root"></div>
+
+    <!-- ─── Portfolio ─── -->
+    <section id="portfolio" class="container-main" aria-label="Portfolio">
+      <div class="portfolio-grid">
+        <!-- Row 1 -->
+        <div class="project-row">
+          <a href="#" class="project-card" data-parallax="0.18">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/aether/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,46,0.7) 0%,rgba(15,52,96,0.4) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,0.35) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.1.title">AETHER</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.1.title">AETHER</span>
+              <span class="project-overlay-cat" data-i18n="project.1.category">Fashion Editorial</span>
+            </div>
+          </a>
+          <a href="#" class="project-card" data-parallax="0.15">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/noir/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.65) 0%,rgba(30,30,30,0.35) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(0,0,0,0.4) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.2.title">NOIR</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.2.title">NOIR</span>
+              <span class="project-overlay-cat" data-i18n="project.2.category">Perfume Brand</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="project-row">
+          <a href="#" class="project-card" data-parallax="0.2">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/cirrus/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,27,42,0.75) 0%,rgba(31,58,95,0.4) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.3.title">CIRRUS</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.3.title">CIRRUS</span>
+              <span class="project-overlay-cat" data-i18n="project.3.category">Tech Identity</span>
+            </div>
+          </a>
+          <a href="#" class="project-card" data-parallax="0.12">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/terra/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,67,50,0.7) 0%,rgba(45,106,79,0.4) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,transparent 30%,rgba(0,0,0,0.25) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.4.title">TERRA</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.4.title">TERRA</span>
+              <span class="project-overlay-cat" data-i18n="project.4.category">Sustainable Packaging</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="project-row">
+          <a href="#" class="project-card" data-parallax="0.16">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/lumen/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,10,46,0.7) 0%,rgba(45,27,105,0.45) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,transparent 50%,rgba(0,0,0,0.2) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.5.title">LUMEN</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.5.title">LUMEN</span>
+              <span class="project-overlay-cat" data-i18n="project.5.category">Lighting Showroom</span>
+            </div>
+          </a>
+          <a href="#" class="project-card" data-parallax="0.14">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/cord/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,28,28,0.65) 0%,rgba(58,58,58,0.35) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(0,0,0,0.4) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.6.title">CORD</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.6.title">CORD</span>
+              <span class="project-overlay-cat" data-i18n="project.6.category">Audio Brand</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="project-row">
+          <a href="#" class="project-card" data-parallax="0.17">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/vert/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,43,29,0.7) 0%,rgba(26,74,50,0.4) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(255,255,255,0.012) 30px,rgba(255,255,255,0.012) 31px);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.7.title">VERT</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.7.title">VERT</span>
+              <span class="project-overlay-cat" data-i18n="project.7.category">Outdoor Apparel</span>
+            </div>
+          </a>
+          <a href="#" class="project-card" data-parallax="0.13">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/fume/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,24,16,0.7) 0%,rgba(74,40,32,0.4) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,transparent 40%,rgba(0,0,0,0.3) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.8.title">FUME</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.8.title">FUME</span>
+              <span class="project-overlay-cat" data-i18n="project.8.category">Candle Collection</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Row 5 (single) -->
+        <div class="project-row">
+          <a href="#" class="project-card" data-parallax="0.19">
+            <div class="project-thumb">
+              <div class="bg-art" style="background-image:url('https://picsum.photos/seed/ore/960/660');background-size:cover;background-position:50% 50%;">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,46,0.7) 0%,rgba(42,42,74,0.45) 100%);mix-blend-mode:multiply;"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 50%,transparent 40%,rgba(0,0,0,0.3) 100%);"></div>
+              </div>
+              <span class="brand-tag" data-i18n="project.9.title">ORE</span>
+              <div class="parallax-layer" data-parallax-layer></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="project-overlay-info">
+              <span class="project-overlay-title" data-i18n="project.9.title">ORE</span>
+              <span class="project-overlay-cat" data-i18n="project.9.category">Jewelry Brand</span>
+            </div>
+          </a>
+        </div>
+
+        <p class="project-footnote">All work &copy; KAIROS</p>
+      </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section class="cta-section" data-reveal aria-label="Call to action">
+      <div class="container-main">
+        <h2 class="cta-heading" data-reveal-cta>
+          <span class="cta-heading-reveal">
+            <span class="reveal-base" aria-hidden="true">Available for new projects<br>and collaborations.</span>
+            <span class="reveal-overlay" data-i18n="cta.heading">Available for new projects<br>and collaborations.</span>
+          </span>
+        </h2>
+        <div class="cta-btn-wrapper">
+          <a href="mailto:hello@kairos.studio" class="cta-btn" data-i18n="cta.button">
+            START A PROJECT
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Contact ─── -->
+    <section class="contact-section container-main" data-reveal aria-label="Contact">
+      <div class="contact-grid">
+        <a href="#" class="contact-link" data-i18n="contact.behance">BEHANCE</a>
+        <span class="contact-divider" aria-hidden="true">/</span>
+        <a href="#" class="contact-link" data-i18n="contact.linkedin">LINKEDIN</a>
+        <span class="contact-divider" aria-hidden="true">/</span>
+        <a href="#" class="contact-link" data-i18n="contact.instagram">INSTAGRAM</a>
+        <span class="contact-divider" aria-hidden="true">/</span>
+        <a href="#" class="contact-link" data-i18n="contact.dribbble">DRIBBBLE</a>
+        <span class="contact-divider" style="flex:1" aria-hidden="true"></span>
+        <a href="mailto:hello@kairos.studio" class="contact-link" data-i18n="contact.email">hello@kairos.studio</a>
+        <span class="contact-divider" aria-hidden="true">/</span>
+        <a href="tel:+442079460958" class="contact-link" data-i18n="contact.phone">+44 20 7946 0958</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating-cta">
+    <a href="mailto:hello@kairos.studio" class="floating-cta-btn" data-i18n="cta.floating">
+      GET IN TOUCH
+    </a>
+  </div>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
