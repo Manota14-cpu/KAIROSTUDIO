@@ -11,7 +11,7 @@ import { initScrollReveal } from './animations/scroll'
 import { initParallax, initCardHover } from './animations/parallax'
 import { initLoadingScreen } from './sections/LoadingScreen'
 import { LogoCarousel } from './components/LogoCarousel'
-import { initLocale, setLocale } from './i18n/translations'
+import { initLocale, setLocale, t } from './i18n/translations'
 import { PROJECTS } from './constants'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -48,6 +48,7 @@ function initLangSwitcher(): void {
     current.textContent = lang.toUpperCase()
     container.classList.remove('open')
     trigger.setAttribute('aria-expanded', 'false')
+    populateModalFromI18n()
   })
 
   document.addEventListener('click', () => {
@@ -83,22 +84,30 @@ function initApp(): void {
   initProjectModal()
 }
 
-function initProjectModal(): void {
-  const overlay = document.getElementById('project-modal')!
-  const backdrop = overlay.querySelector('.modal-backdrop') as HTMLElement
-  const closeBtn = overlay.querySelector('.modal-close') as HTMLElement
+let activeProjectId: string | null = null
+
+function populateModalFromI18n(): void {
+  if (!activeProjectId) return
   const titleEl = document.getElementById('modal-title')!
   const categoryEl = document.getElementById('modal-category')!
   const descEl = document.getElementById('modal-description')!
   const servicesEl = document.getElementById('modal-services')!
   const approachEl = document.getElementById('modal-approach')!
+  titleEl.textContent = t(`project.${activeProjectId}.title`)
+  categoryEl.textContent = t(`project.${activeProjectId}.category`)
+  descEl.textContent = t(`project.${activeProjectId}.description`)
+  approachEl.textContent = t(`project.${activeProjectId}.approach`)
+  servicesEl.innerHTML = t(`project.${activeProjectId}.services`).split('|').map((s) => `<li>${s.trim()}</li>`).join('')
+}
+
+function initProjectModal(): void {
+  const overlay = document.getElementById('project-modal')!
+  const backdrop = overlay.querySelector('.modal-backdrop') as HTMLElement
+  const closeBtn = overlay.querySelector('.modal-close') as HTMLElement
 
   function openModal(project: typeof PROJECTS[number]): void {
-    titleEl.textContent = project.title
-    categoryEl.textContent = project.category
-    descEl.textContent = project.description
-    approachEl.textContent = project.approach
-    servicesEl.innerHTML = project.services.map((s) => `<li>${s}</li>`).join('')
+    activeProjectId = project.id
+    populateModalFromI18n()
     overlay.classList.add('open')
     overlay.setAttribute('aria-hidden', 'false')
     document.body.style.overflow = 'hidden'
@@ -108,6 +117,7 @@ function initProjectModal(): void {
     overlay.classList.remove('open')
     overlay.setAttribute('aria-hidden', 'true')
     document.body.style.overflow = ''
+    activeProjectId = null
   }
 
   closeBtn.addEventListener('click', closeModal)
