@@ -14,9 +14,6 @@ export function initLoadingScreen(onComplete: () => void): void {
   }
 
   const numberEl = document.getElementById('loading-number')!
-  const bgEl = document.getElementById('loading-bg')!
-  const glowEl = document.getElementById('loading-glow')!
-  const brandEl = document.getElementById('loading-brand')!
 
   const proxy = { value: 0 }
 
@@ -42,9 +39,4 @@ export function initLoadingScreen(onComplete: () => void): void {
       numberEl.textContent = Math.round(proxy.value).toString()
     },
   }, 0)
-
-  tl.to(bgEl, { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0)
-  tl.to(glowEl, { opacity: 1, scale: 1.8, duration: 1.2, ease: 'power2.out' }, 0.3)
-  tl.to(brandEl, { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.8)
-  tl.to(brandEl, { opacity: 0, duration: 0.3 }, '-=0.6')
 }

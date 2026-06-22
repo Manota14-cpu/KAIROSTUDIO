@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://picsum.photos" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:wght@500;700&family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:wght@500;700&family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     .cursor-glow {
@@ -41,16 +41,49 @@
       align-items: center; justify-content: center;
       background: #000; overflow: hidden;
     }
-    .loading-ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,59,48,0.08); }
-    .loading-ring::after {
-      content: ''; position: absolute; inset: -1px; border-radius: 50%;
-      border: 1.5px solid transparent;
-      border-top-color: #FF3B30; border-right-color: #FF3B30;
-      animation: lr 1.2s cubic-bezier(0.34,1.56,0.64,1) infinite;
+
+    .loading-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: loading-fade-in 0.8s 0.3s ease-out forwards;
+    }
+
+    .loading-brand span {
+      font-weight: 700;
+      color: #FF3B30;
+    }
+
+    .loading-ring {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.06);
+      border-top-color: #FF3B30;
+      border-right-color: #FF3B30;
+      animation: lr 1s cubic-bezier(0.34,1.56,0.64,1) infinite;
       will-change: transform;
+      opacity: 0;
+      animation: lr 1s cubic-bezier(0.34,1.56,0.64,1) infinite, loading-fade-in 0.5s 0.6s ease-out forwards;
     }
     @keyframes lr { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .loading-percentage { font-family: 'Geist','DM Sans',sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; color: #999994; margin-top: 1.5rem; font-variant-numeric: tabular-nums; }
+    @keyframes loading-fade-in { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    .loading-percentage {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.625rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+      margin-top: 1rem;
+      font-variant-numeric: tabular-nums;
+      opacity: 0;
+      animation: loading-fade-in 0.5s 0.9s ease-out forwards;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -70,16 +103,12 @@
 <body>
   <!-- ─── Loading Screen ─── -->
   <div id="loading-screen" role="status" aria-label="Loading">
-    <div class="loading-bg" id="loading-bg"></div>
-    <div class="loading-ring-container">
-      <div class="loading-ring-glow" id="loading-glow"></div>
-      <div class="loading-ring"></div>
-    </div>
+    <div class="loading-brand" id="loading-brand"><span>KAIROS</span> STUDIO</div>
+    <div class="loading-ring" id="loading-ring"></div>
     <div class="loading-percentage">
       <span id="loading-number">0</span>
       <span class="loading-suffix">%</span>
     </div>
-    <div class="loading-brand" id="loading-brand">KAIROS</div>
   </div>
 
   <div class="noise-overlay" aria-hidden="true"></div>

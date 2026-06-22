@@ -49,7 +49,16 @@ function initApp(): void {
 function init(): void {
   setLocale('en')
 
+  const fallbackTimer = setTimeout(() => {
+    const screen = document.getElementById('loading-screen')
+    if (screen) {
+      screen.style.display = 'none'
+    }
+    initApp()
+  }, 5000)
+
   initLoadingScreen(() => {
+    clearTimeout(fallbackTimer)
     initApp()
   })
 }
