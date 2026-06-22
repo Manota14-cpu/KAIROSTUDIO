@@ -179,6 +179,8 @@ function setLocale(locale: Locale): void {
   document.querySelectorAll('[data-lang]').forEach((el) => {
     el.classList.toggle('active', el.getAttribute('data-lang') === locale)
   })
+  const currentLabel = document.getElementById('lang-current')
+  if (currentLabel) currentLabel.textContent = locale.toUpperCase()
   localStorage.setItem('kairos-locale', locale)
 }
 

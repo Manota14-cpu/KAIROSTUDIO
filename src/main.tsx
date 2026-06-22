@@ -28,11 +28,31 @@ function initClock(): void {
 }
 
 function initLangSwitcher(): void {
-  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang') as 'en' | 'es' | 'pt' | 'fr'
-      if (lang) setLocale(lang)
-    })
+  const container = document.getElementById('nav-lang')!
+  const trigger = document.getElementById('lang-trigger')!
+  const menu = document.getElementById('lang-menu')!
+  const current = document.getElementById('lang-current')!
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation()
+    container.classList.toggle('open')
+    trigger.setAttribute('aria-expanded', String(container.classList.contains('open')))
+  })
+
+  menu.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.lang-opt') as HTMLElement | null
+    if (!btn) return
+    const lang = btn.getAttribute('data-lang') as 'en' | 'es' | 'pt' | 'fr'
+    if (!lang) return
+    setLocale(lang)
+    current.textContent = lang.toUpperCase()
+    container.classList.remove('open')
+    trigger.setAttribute('aria-expanded', 'false')
+  })
+
+  document.addEventListener('click', () => {
+    container.classList.remove('open')
+    trigger.setAttribute('aria-expanded', 'false')
   })
 }
 
